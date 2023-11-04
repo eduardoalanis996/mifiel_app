@@ -1,11 +1,21 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, Form, FormControl } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+
+  let navigate = useNavigate(); 
+
+  const sing = (id) => {
+    let path = `sign/${id}`; 
+    navigate(path);
+  };
+
+
   const data = [
     {
-      id: 1,
+      id: 'BH4kkeZoJJs',
       name: "Contrato 1",
       signatures: ["eduardoalanis996@gmail.com"],
       created_at: "02/11/2023",
@@ -13,7 +23,7 @@ function HomePage() {
       is_signature: true,
     },
     {
-      id: 2,
+      id: 'BH4kkeZoJJ',
       name: "Contrato 2",
       signatures: ["eduardoalanis996@gmail.com", "jonh@mail.com"],
       created_at: "02/11/2023",
@@ -21,7 +31,7 @@ function HomePage() {
       is_signature: false,
     },
     {
-      id: 3,
+      id: 'XA34Ac3zYF',
       name: "Contrato 3",
       signatures: ["eduardoalanis996@gmail.com"],
       created_at: "02/11/2023",
@@ -62,7 +72,7 @@ function HomePage() {
                   {item.is_signature ? (
                     <Button variant="success">Descargar</Button>
                   ) : (
-                    <Button variant="primary">Firmar</Button>
+                    <Button variant="primary" onClick={() => sing(item.id)}>Firmar</Button>
                   )}
                 </td>
               </tr>
